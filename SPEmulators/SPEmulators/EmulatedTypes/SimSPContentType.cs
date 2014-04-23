@@ -1,10 +1,5 @@
 ﻿namespace SPEmulators.EmulatedTypes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.QualityTools.Testing.Fakes.Instances;
     using Microsoft.QualityTools.Testing.Fakes.Shims;
     using Microsoft.SharePoint;
@@ -102,10 +97,8 @@
                 this.Updated = true;
             };
         }
-        /// <summary>
-        /// Prepares the <see cref="T:Microsoft.SharePoint.SPContentType" /> type.
-        /// </summary>
-        public static void Prepare()
+
+        public static void Initialize()
         {
             ShimSPContentType.BehaveAsNotImplemented();
             ShimSPContentType.StaticConstructor = () =>
@@ -130,9 +123,7 @@
                 emSPContentType.FieldLinks.Clear();
             };
         }
-        /// <summary>
-        /// Returns the emulator of the specified <paramref name="instance" />.
-        /// </summary>
+
         public static SimSPContentType FromInstance(SPContentType instance)
         {
             return InstancedPool.CastAsInstanced<SPContentType, SimSPContentType>(instance);
