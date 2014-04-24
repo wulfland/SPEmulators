@@ -56,7 +56,9 @@
     <Compile Include="EmulatedTypes\SimSPFieldIndex.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldIndexCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldLinkCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPFileCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPFolder.cs" />
+    <Compile Include="EmulatedTypes\SimSPFolderCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPList.cs" />
     <Compile Include="EmulatedTypes\SimSPListItem.cs" />
     <Compile Include="EmulatedTypes\SimSPListItemCollection.cs" />
