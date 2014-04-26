@@ -8,11 +8,9 @@
     internal class SimSPContentType : Isolator<SPContentType, ShimSPContentType>
     {
         private readonly SimSPFieldLinkCollection fieldLinks;
-        private string group;
-        private string name;
         private bool readOnly;
         private bool readOnlyOld;
- 
+
         public SPContentTypeId Id
         {
             get;
@@ -27,26 +25,14 @@
 
         public string Name
         {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
+            get;
+            set;
         }
 
         public string Group
         {
-            get
-            {
-                return this.group;
-            }
-            set
-            {
-                this.group = value;
-            }
+            get;
+            set;
         }
 
         public bool Updated
@@ -92,7 +78,7 @@
                 this.readOnly = value;
             };
             base.Fake.ReadOnlyOldGet = () => this.readOnlyOld;
-            base.Fake.Update = () => 
+            base.Fake.Update = () =>
             {
                 this.Updated = true;
             };
