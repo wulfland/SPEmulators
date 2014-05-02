@@ -41,7 +41,7 @@
 
         internal static void Initialize()
         {
-            //ShimSPFieldLinkCollection.set_Behavior(EmulatorUtilities.NotSupportedBehavior);
+            ShimSPFieldLinkCollection.BehaveAsNotImplemented();
         }
     }
 }

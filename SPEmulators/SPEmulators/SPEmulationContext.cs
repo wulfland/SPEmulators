@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.QualityTools.Testing.Fakes;
+    using SPEmulators.EmulatedTypes;
 
     /// <summary>
     /// The emulation context for SharePoint emulation.
@@ -41,9 +42,38 @@
 
             if (isolationLevel == SPEmulators.IsolationLevel.Fake)
             {
-                // todo: initialize fakes
+                SimHttpContext.Initialize();
+                SimHttpRequest.Initialize();
+                SimHttpResponse.Initialize();
+                SimSPContext.Initialize();
+                SimSPEventPropertiesBase.Initialize();
+                SimSPField.Initialize();
+                SimSPFieldCollection.Initialize();
+                SimSPFieldIndex.Initialize();
+                SimSPFieldIndexCollection.Initialize();
+                SimSPFieldLink.Initialize();
+                SimSPFieldLinkCollection.Initialize();
+                SimSPFieldUrlValue.Initialize();
+                SimSPFile.Initialize();
+                SimSPFileCollection.Initialize();
+                SimSPFolder.Initialize();
+                SimSPFolderCollection.Initialize();
+                SimSPItem.Initialize();
+                SimSPItemEventDataCollection.Initialize();
+                SimSPItemEventProperties.Initialize();
+                SimSPList.Initialize();
+                SimSPListCollection.Initialize();
+                SimSPListEventProperties.Initialize();
+                SimSPListItem.Initialize();
+                SimSPListItemCollection.Initialize();
+                SimSPSecurableObject.Initialize();
+                SimSPSecurity.Initialize();
+                SimSPSite.Initialize();
+                SimSPWeb.Initialize();
+                SimSPWebCollection.Initialize();
             }
         }
+
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

@@ -37,9 +37,18 @@
     <Reference Include="Microsoft.SharePoint.15.0.0.0.Fakes">
       <HintPath>..\..\lib\Microsoft.SharePoint.15.0.0.0.Fakes.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\System.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\System.Web.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,34 +57,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionIsolator.cs" />
+    <Compile Include="EmulatedTypes\SimHttpContext.cs" />
+    <Compile Include="EmulatedTypes\SimHttpRequest.cs" />
+    <Compile Include="EmulatedTypes\SimHttpResponse.cs" />
     <Compile Include="EmulatedTypes\SimSPContentType.cs" />
     <Compile Include="EmulatedTypes\SimSPContentTypeCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPContext.cs" />
+    <Compile Include="EmulatedTypes\SimSPDocumentLibrary.cs" />
+    <Compile Include="EmulatedTypes\SimSPEventPropertiesBase.cs" />
+    <Compile Include="EmulatedTypes\SimSPFarm.cs" />
     <Compile Include="EmulatedTypes\SimSPFeatureCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPField.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldIndex.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldIndexCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPFieldLink.cs" />
     <Compile Include="EmulatedTypes\SimSPFieldLinkCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPFieldUrlValue.cs" />
     <Compile Include="EmulatedTypes\SimSPFile.cs" />
     <Compile Include="EmulatedTypes\SimSPFileCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPFolder.cs" />
     <Compile Include="EmulatedTypes\SimSPFolderCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPItem.cs" />
+    <Compile Include="EmulatedTypes\SimSPItemEventDataCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPItemEventProperties.cs" />
     <Compile Include="EmulatedTypes\SimSPList.cs" />
     <Compile Include="EmulatedTypes\SimSPListCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPListEventProperties.cs" />
     <Compile Include="EmulatedTypes\SimSPListItem.cs" />
     <Compile Include="EmulatedTypes\SimSPListItemCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPPersistedObject.cs" />
+    <Compile Include="EmulatedTypes\SimSPPersistedUpgradableObject.cs" />
     <Compile Include="EmulatedTypes\SimSPPropertyBag.cs" />
     <Compile Include="EmulatedTypes\SimSPRoleAssignmentCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPSecurableObject.cs" />
+    <Compile Include="EmulatedTypes\SimSPSecurity.cs" />
     <Compile Include="EmulatedTypes\SimSPSite.cs" />
+    <Compile Include="EmulatedTypes\SimSPSiteCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPUser.cs" />
     <Compile Include="EmulatedTypes\SimSPUserCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPView.cs" />
     <Compile Include="EmulatedTypes\SimSPViewContext.cs" />
     <Compile Include="EmulatedTypes\SimSPWeb.cs" />
     <Compile Include="EmulatedTypes\SimSPViewCollection.cs" />
+    <Compile Include="EmulatedTypes\SimSPWebApplication.cs" />
     <Compile Include="EmulatedTypes\SimSPWebCollection.cs" />
     <Compile Include="ICanIsolate.cs" />
     <Compile Include="Isolator.cs" />
@@ -85,7 +110,13 @@
     <Compile Include="UrlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fakes\" />
+    <Fakes Include="Fakes\System.Web.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\System.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\mscorlib.fakes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
