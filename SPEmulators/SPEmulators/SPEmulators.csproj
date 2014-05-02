@@ -116,17 +116,27 @@
     <Fakes Include="Fakes\System.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="Fakes\mscorlib.fakes" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Fakes\Microsoft.SharePoint.fakes" />
+    <Content Include="Package.nuspec">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\init.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tools\install.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(TargetDir)\packages\tools"
+copy /Y "$(ProjectDir)tools\*" "$(TargetDir)packages\tools"
+mkdir "$(TargetDir)\packages\lib\net40"
+copy /Y "$(TargetPath)" "$(TargetDir)packages\lib\net40\"
+mkdir "$(TargetDir)\packages\content\Fakes"
+copy /Y "$(ProjectDir)Fakes\*" "$(TargetDir)packages\content\Fakes"
+"$(SolutionDir)..\lib\NuGet.exe" pack "$(SolutionDir)Alegri.Documentation\Alegri.Documentation.nuspec" -OutputDirectory "$(TargetDir)packages"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>

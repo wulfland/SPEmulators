@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>SPSimulators</id>
+    <version>1.0.0</version>
+    <title>SharePoint Simulators</title>
+    <authors>Michael Kaufmann</authors>
+    <owners>Michael Kaufman</owners>
+    <licenseUrl></licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This package allows simluation / emulation of SharePoint 2013 farm solutions.</description>
+    <releaseNotes />
+    <copyright>(c) Michael Kaufmann</copyright>
+    <language />
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.QualityTools.Testing.Fakes" targetFramework="" />
+      <frameworkAssembly assemblyName="Microsoft.SharePoint" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework="" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="SPEmulators.dll" />
+    </references>
+  </metadata>
+</package>
