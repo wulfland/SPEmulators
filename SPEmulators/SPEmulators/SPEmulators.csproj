@@ -35,7 +35,7 @@
       <HintPath>..\..\lib\Microsoft.SharePoint.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SharePoint.15.0.0.0.Fakes">
-      <HintPath>..\..\lib\Microsoft.SharePoint.15.0.0.0.Fakes.dll</HintPath>
+      <HintPath>FakesAssemblies\Microsoft.SharePoint.15.0.0.0.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib.4.0.0.0.Fakes">
       <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
@@ -117,6 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\mscorlib.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fakes\Microsoft.SharePoint.fakes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
