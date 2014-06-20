@@ -2,6 +2,8 @@
 {
     using System;
     using Microsoft.QualityTools.Testing.Fakes;
+    using Microsoft.SharePoint;
+    using Microsoft.SharePoint.Fakes;
     using SPEmulators.EmulatedTypes;
 
     /// <summary>
@@ -12,6 +14,8 @@
         readonly IDisposable shimContext;
         readonly IsolationLevel isolationLevel;
         bool disposed;
+        SPWeb web;
+        SPSite site;
 
         /// <summary>
         /// Gets the isolation level.
@@ -29,49 +33,116 @@
         }
 
         /// <summary>
+        /// Gets the current web.
+        /// </summary>
+        public SPWeb Web
+        {
+            get
+            {
+                return web;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current site.
+        /// </summary>
+        public SPSite Site
+        {
+            get
+            {
+                return site;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SPEmulationContext"/> class.
         /// </summary>
-        /// <param name="level">The level.</param>
-        public SPEmulationContext(IsolationLevel level)
+        /// <param name="isolationLevel">The isolation level.</param>
+        public SPEmulationContext(IsolationLevel isolationLevel)
+            : this(isolationLevel, null)
         {
-            isolationLevel = level;
-            shimContext = ShimsContext.Create();
+        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SPEmulationContext"/> class.
+        /// </summary>
+        /// <param name="isolationLevel">The isolation level.</param>
+        public SPEmulationContext(IsolationLevel isolationLevel, string url)
+        {
             if (!Environment.Is64BitProcess)
                 throw new InvalidOperationException("SharePoint tests must run in 64 bit process.");
 
-            if (isolationLevel == SPEmulators.IsolationLevel.Fake)
+            this.isolationLevel = isolationLevel;
+
+            switch (isolationLevel)
             {
-                SimHttpContext.Initialize();
-                SimHttpRequest.Initialize();
-                SimHttpResponse.Initialize();
-                SimSPContext.Initialize();
-                SimSPEventPropertiesBase.Initialize();
-                SimSPField.Initialize();
-                SimSPFieldCollection.Initialize();
-                SimSPFieldIndex.Initialize();
-                SimSPFieldIndexCollection.Initialize();
-                SimSPFieldLink.Initialize();
-                SimSPFieldLinkCollection.Initialize();
-                SimSPFieldUrlValue.Initialize();
-                SimSPFile.Initialize();
-                SimSPFileCollection.Initialize();
-                SimSPFolder.Initialize();
-                SimSPFolderCollection.Initialize();
-                SimSPItem.Initialize();
-                SimSPItemEventDataCollection.Initialize();
-                SimSPItemEventProperties.Initialize();
-                SimSPList.Initialize();
-                SimSPListCollection.Initialize();
-                SimSPListEventProperties.Initialize();
-                SimSPListItem.Initialize();
-                SimSPListItemCollection.Initialize();
-                SimSPSecurableObject.Initialize();
-                SimSPSecurity.Initialize();
-                SimSPSite.Initialize();
-                SimSPWeb.Initialize();
-                SimSPWebCollection.Initialize();
+                case IsolationLevel.Fake:
+                    // create shim context
+                    shimContext = ShimsContext.Create();
+
+                    // initialize all simulated types
+                    InitializeSimulatedAPI();
+
+                    // Set reference to the simulated site and web in the context
+                    site = SPContext.Current.Site;
+                    web = SPContext.Current.Web;
+                    break;
+                case IsolationLevel.Integration:
+                    // create shim context
+                    shimContext = ShimsContext.Create();
+
+                    // Load the real spite and spweb objects from sharpoint
+                    site = new SPSite(url);
+                    web = site.OpenWeb();
+
+                    // Inject the real webs to the context using shims.
+                    ShimSPContext.CurrentGet = () => new ShimSPContext
+                    {
+                        SiteGet = () => this.site,
+                        WebGet = () => this.web
+                    };
+                    break;
+                case IsolationLevel.None:
+                    // Do not use shimscontext or any kind of fake. Load the real spite and spweb objects from sharpoint.
+                    site = new SPSite(url);
+                    web = site.OpenWeb();
+                    break;
+                default:
+                    throw new InvalidOperationException();
             }
+        }
+
+        private static void InitializeSimulatedAPI()
+        {
+            SimHttpContext.Initialize();
+            SimHttpRequest.Initialize();
+            SimHttpResponse.Initialize();
+            SimSPContext.Initialize();
+            SimSPEventPropertiesBase.Initialize();
+            SimSPField.Initialize();
+            SimSPFieldCollection.Initialize();
+            SimSPFieldIndex.Initialize();
+            SimSPFieldIndexCollection.Initialize();
+            SimSPFieldLink.Initialize();
+            SimSPFieldLinkCollection.Initialize();
+            SimSPFieldUrlValue.Initialize();
+            SimSPFile.Initialize();
+            SimSPFileCollection.Initialize();
+            SimSPFolder.Initialize();
+            SimSPFolderCollection.Initialize();
+            SimSPItem.Initialize();
+            SimSPItemEventDataCollection.Initialize();
+            SimSPItemEventProperties.Initialize();
+            SimSPList.Initialize();
+            SimSPListCollection.Initialize();
+            SimSPListEventProperties.Initialize();
+            SimSPListItem.Initialize();
+            SimSPListItemCollection.Initialize();
+            SimSPSecurableObject.Initialize();
+            SimSPSecurity.Initialize();
+            SimSPSite.Initialize();
+            SimSPWeb.Initialize();
+            SimSPWebCollection.Initialize();
         }
 
 
@@ -92,10 +163,52 @@
         {
             if (!disposed)
             {
+                if (web != null)
+                    web.Dispose();
+
+                if (site != null)
+                    site.Dispose();
+
                 if (shimContext != null)
                     shimContext.Dispose();
 
                 disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Gets or creates a list depending of the current isolation level.
+        /// If the isolation level is integration or none the function loads the list from the current web (the url that was specified in the constructor).
+        /// If the isolation level is fake a list will be added to the faked web instance.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
+        public virtual SPList GetOrCreateList(string name, SPListTemplateType type, params string[] fields)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+
+            if (isolationLevel == IsolationLevel.Integration || isolationLevel == SPEmulators.IsolationLevel.None)
+            {
+                return web.Lists[name];
+            }
+            else
+            {
+                var id = web.Lists.Add(name, string.Empty, type);
+                var list = web.Lists[id];
+                if (fields.Length > 0)
+                {
+                    Array.ForEach(fields, (s) =>
+                    {
+                        list.Fields.Add(s, SPFieldType.Text, false);
+                    });
+
+                    list.Update();
+                }
+
+                return list;
             }
         }
     }
