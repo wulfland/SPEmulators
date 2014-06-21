@@ -8,7 +8,7 @@
     <owners>Michael Kaufmann</owners>
     <licenseUrl>http://creativecommons.org/licenses/by/3.0/deed.de</licenseUrl>
     <projectUrl>https://github.com/wulfland/SPEmulators</projectUrl>
-    <iconUrl>http://wp.me/a3AlMw-6P</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/wulfland/SPEmulators/master/SPEmulators/SPEmulators/spemulators.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package allows simluation / emulation of SharePoint 2013 farm solutions.</description>
     <tags>SharePoint Fake</tags>
