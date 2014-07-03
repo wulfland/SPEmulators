@@ -1,1 +1,0 @@
-C:\Users\mkaufmann\Source\SPEM\SPEmulators\SPEmulators\SPEmulators\Fakes\Microsoft.SharePoint.fakes : error : assembly C:\Users\mkaufmann\Source\SPEM\SPEmulators\lib\Microsoft.SharePoint.dll failed to load properly Could not resolve assembly 'Microsoft.SharePoint.Library, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c'. Are you missing an assembly reference?

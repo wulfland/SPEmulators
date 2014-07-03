@@ -290,7 +290,7 @@
             return InstancedPool.CastAsInstanced<SPList, SimSPList>(instance);
         }
 
-        internal new static void Initialize()
+        internal static void Initialize()
         {
             SimSPSecurableObject.Initialize();
             ShimSPList.BehaveAsNotImplemented();

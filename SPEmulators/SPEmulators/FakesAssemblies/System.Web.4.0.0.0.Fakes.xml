@@ -475,8 +475,8 @@
         <member name="P:System.Web.Fakes.ShimHttpContext.UserGet">
             <summary>Sets the shim of HttpContext.get_User()</summary>
         </member>
-        <member name="P:System.Web.Fakes.ShimHttpContext.UserLanguagesFromContext">
-            <summary>Sets the shim of HttpContext.UserLanguagesFromContext()</summary>
+        <member name="P:System.Web.Fakes.ShimHttpContext.UserLanguageFromContext">
+            <summary>Sets the shim of HttpContext.UserLanguageFromContext()</summary>
         </member>
         <member name="P:System.Web.Fakes.ShimHttpContext.UserSetIPrincipal">
             <summary>Sets the shim of HttpContext.set_User(IPrincipal value)</summary>
@@ -922,8 +922,8 @@
         <member name="P:System.Web.Fakes.ShimHttpContext.AllInstances.UserGet">
             <summary>Sets the shim of HttpContext.get_User()</summary>
         </member>
-        <member name="P:System.Web.Fakes.ShimHttpContext.AllInstances.UserLanguagesFromContext">
-            <summary>Sets the shim of HttpContext.UserLanguagesFromContext()</summary>
+        <member name="P:System.Web.Fakes.ShimHttpContext.AllInstances.UserLanguageFromContext">
+            <summary>Sets the shim of HttpContext.UserLanguageFromContext()</summary>
         </member>
         <member name="P:System.Web.Fakes.ShimHttpContext.AllInstances.UserSetIPrincipal">
             <summary>Sets the shim of HttpContext.set_User(IPrincipal value)</summary>
