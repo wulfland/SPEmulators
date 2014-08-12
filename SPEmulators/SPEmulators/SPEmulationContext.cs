@@ -37,6 +37,7 @@
         /// </summary>
         public SPWeb Web
         {
+            [System.Diagnostics.DebuggerStepThrough]
             get
             {
                 return web;
@@ -48,6 +49,7 @@
         /// </summary>
         public SPSite Site
         {
+            [System.Diagnostics.DebuggerStepThrough]
             get
             {
                 return site;

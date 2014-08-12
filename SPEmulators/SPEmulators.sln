@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEmulators", "SPEmulators\SPEmulators.csproj", "{D0A95188-229A-4532-B71D-9B48DB8CF0FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharePointSampleProject", "SharePointSampleProject\SharePointSampleProject.csproj", "{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEmulatorsTest", "SPEmulatorsTest\SPEmulatorsTest.csproj", "{2631A7F8-CDCA-470D-A63B-A93D7586A8B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,16 @@ Global
 		{D0A95188-229A-4532-B71D-9B48DB8CF0FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0A95188-229A-4532-B71D-9B48DB8CF0FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0A95188-229A-4532-B71D-9B48DB8CF0FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C738EC05-2F1A-4F6B-98C7-94AAF5F844E3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2631A7F8-CDCA-470D-A63B-A93D7586A8B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2631A7F8-CDCA-470D-A63B-A93D7586A8B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2631A7F8-CDCA-470D-A63B-A93D7586A8B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2631A7F8-CDCA-470D-A63B-A93D7586A8B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
