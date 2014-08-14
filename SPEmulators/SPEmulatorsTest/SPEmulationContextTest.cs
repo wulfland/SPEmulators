@@ -212,5 +212,24 @@
                 list.Delete();
             }
         }
+
+        [TestMethod]
+        public void GetOrCreateList_Overload_Supports_Document_Libraries()
+        {
+            using (var sut = new SPEmulationContext(IsolationLevel.Fake, "http://localhost"))
+            {
+                var result = sut.GetOrCreateList(@"..\..\..\SharePointSampleProject\ADefaultDocumentLibrary\Elements.xml");
+
+                var list = sut.Web.Lists["ADefaultDocumentLibrary"];
+
+                Assert.IsNotNull(list);
+                Assert.AreEqual<string>("My List Instance", list.Description);
+                Assert.AreEqual<SPListTemplateType>(SPListTemplateType.DocumentLibrary, list.BaseTemplate);
+                Assert.IsTrue(list.OnQuickLaunch);
+                Assert.AreNotEqual<int>(0, list.Fields.Count);
+                Assert.IsNotNull(list.Fields[SPBuiltInFieldId.Title]);
+                Assert.IsNotNull(list.Fields[SPBuiltInFieldId.ID]);
+            }
+        }
     }
 }

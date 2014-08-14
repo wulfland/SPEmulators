@@ -60,6 +60,9 @@
     <None Include="ACustomList\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c2136a1a-c0b5-45c1-b9d0-39a8485e3d9d}</SharePointProjectItemId>
     </None>
+    <None Include="ADefaultDocumentLibrary\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{75c05ada-2c8b-439b-9b8a-bed3152becc7}</SharePointProjectItemId>
+    </None>
     <None Include="ADefaultList\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8e72b212-391a-4e82-9960-5d5b2b7d2f7b}</SharePointProjectItemId>
     </None>
@@ -84,6 +87,7 @@
     <Content Include="ACustomList\ACustomListInstance\Elements.xml" />
     <Content Include="ACustomList\Elements.xml" />
     <Content Include="ACustomList\Schema.xml" />
+    <Content Include="ADefaultDocumentLibrary\Elements.xml" />
     <Content Include="ADefaultList\Elements.xml" />
     <Content Include="ADocumentLibrary\ADocumentLibraryInstance\Elements.xml" />
     <Content Include="ADocumentLibrary\EditDlg.htm" />
