@@ -190,6 +190,13 @@
             list.Lists = base.Instance;
             list.Fields.Add(new SimSPField
             {
+                Id = SPBuiltInFieldId.ID,
+                InternalName = "ID",
+                Title = "ID", 
+                Type = SPFieldType.Counter
+            }.Instance);
+            list.Fields.Add(new SimSPField
+            {
                 Id = SPBuiltInFieldId.Title,
                 InternalName = "Title",
                 Title = "Title",

@@ -1,6 +1,8 @@
 ﻿namespace SPEmulators
 {
     using System;
+    using System.Linq;
+    using System.Xml.Linq;
     using Microsoft.QualityTools.Testing.Fakes;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Fakes;
@@ -211,6 +213,23 @@
                 }
 
                 return list;
+            }
+        }
+
+        public virtual SPList GetOrCreateList(string relativePathToElementsXml)
+        {
+            if (string.IsNullOrEmpty(relativePathToElementsXml))
+                throw new ArgumentNullException("relativePathToElementsXml");
+
+            var elements = new Elements(relativePathToElementsXml);
+
+            if (isolationLevel == IsolationLevel.Integration || isolationLevel == SPEmulators.IsolationLevel.None)
+            {
+                return web.Lists[elements.ListTitle];
+            }
+            else
+            {
+                return elements.CreateListInstance(web);
             }
         }
     }

@@ -1,4 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance Title="ADefaultList" OnQuickLaunch="TRUE" TemplateType="100" FeatureId="00bfea71-de22-43b2-a848-c05709900100" Url="Lists/ADefaultList" Description="My List Instance"></ListInstance>
+  <ListInstance 
+    Title="ADefaultList" 
+    OnQuickLaunch="TRUE" 
+    TemplateType="100" 
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100" 
+    Url="Lists/ADefaultList" 
+    Description="My List Instance">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">Default Item 1</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">2</Field>
+          <Field Name="Title">Default Item 2</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
 </Elements>
