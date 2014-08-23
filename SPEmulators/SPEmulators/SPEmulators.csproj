@@ -110,6 +110,7 @@
     <Compile Include="EmulatedTypes\SimSPWebCollection.cs" />
     <Compile Include="ICanIsolate.cs" />
     <Compile Include="Isolator.cs" />
+    <Compile Include="Schema.cs" />
     <Compile Include="SPEmulationContext.cs" />
     <Compile Include="IsolationLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

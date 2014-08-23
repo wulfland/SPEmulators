@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance 
-    Title="ACustomList" 
-    OnQuickLaunch="TRUE" 
-    TemplateType="100" 
-    Url="Lists/ACustomList" 
-    Description="My List Instance">
+  <ListInstance Title="ACustomList" OnQuickLaunch="TRUE" TemplateType="100" Url="Lists/ACustomList" Description="My List Instance">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">MyTitle</Field>
+          <Field Name="StringColumn">MyString</Field>
+          <Field Name="DateAndTimeColumn">1999-12-31</Field>
+          <Field Name="LookupField">1</Field>
+          <Field Name="User1">1</Field>
+        </Row>
+      </Rows>
+    </Data>
   </ListInstance>
 </Elements>

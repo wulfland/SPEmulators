@@ -144,7 +144,7 @@
         {
             if (type <= SPFieldType.Computed)
             {
-                if (type == SPFieldType.Lookup || type == SPFieldType.Computed)
+                if (type == SPFieldType.Computed)
                 {
                     throw new InvalidOperationException();
                 }

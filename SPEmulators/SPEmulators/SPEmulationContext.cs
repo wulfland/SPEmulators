@@ -185,10 +185,10 @@
         /// If the isolation level is integration or none the function loads the list from the current web (the url that was specified in the constructor).
         /// If the isolation level is fake a list will be added to the faked web instance.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="type"></param>
-        /// <param name="fields"></param>
-        /// <returns></returns>
+        /// <param name="name">The name of the list.</param>
+        /// <param name="type">The type (SPListTemplateType) of the list.</param>
+        /// <param name="fields">An optional array of strings. For each value a text field will be added to the list.</param>
+        /// <returns>The list instance.</returns>
         public virtual SPList GetOrCreateList(string name, SPListTemplateType type, params string[] fields)
         {
             if (string.IsNullOrEmpty(name))
@@ -216,12 +216,19 @@
             }
         }
 
-        public virtual SPList GetOrCreateList(string relativePathToElementsXml)
+        /// <summary>
+        /// Gets or creates a list depending of the current isolation level.
+        /// If the isolation level is integration or none the function loads the list from the current web (the url that was specified in the constructor).
+        /// If the isolation level is fake a list will be added to the faked web instance.
+        /// </summary>
+        /// <param name="pathToElementsXml">The path to the elements.xml that contains the list instance.</param>
+        /// <returns>The list instance.</returns>
+        public virtual SPList GetOrCreateList(string pathToElementsXml, string pathToSchemaXml = null)
         {
-            if (string.IsNullOrEmpty(relativePathToElementsXml))
+            if (string.IsNullOrEmpty(pathToElementsXml))
                 throw new ArgumentNullException("relativePathToElementsXml");
 
-            var elements = new Elements(relativePathToElementsXml);
+            var elements = new Elements(pathToElementsXml);
 
             if (isolationLevel == IsolationLevel.Integration || isolationLevel == SPEmulators.IsolationLevel.None)
             {
@@ -229,7 +236,17 @@
             }
             else
             {
-                return elements.CreateListInstance(web);
+                var list = elements.CreateListInstance(web);
+
+                if (!string.IsNullOrWhiteSpace(pathToSchemaXml))
+                {
+                    var schema = new Schema(pathToSchemaXml);
+                    schema.AddFieldsToList(list);
+                }
+
+                elements.AddDefaultData(list);
+
+                return list;
             }
         }
     }
