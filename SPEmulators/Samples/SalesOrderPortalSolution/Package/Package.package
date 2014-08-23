@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="dcc4192e-dbfa-474a-9b51-d4897144f047" solutionId="dcc4192e-dbfa-474a-9b51-d4897144f047" resetWebServer="false" sharePointProductVersion="15.0" name="SalesOrderPortalSolution" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="9bd873d8-1401-4e11-a760-fadc3c8c1454" />
+    <featureReference itemId="e2b5711b-4d3c-4eb6-a3fe-0dc834bbab9d" />
+  </features>
+</package>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Order Lines"
+                OnQuickLaunch="TRUE"
+                TemplateType="100" 
+                FeatureId="00bfea71-de22-43b2-a848-c05709900100" 
+                Url="Lists/OrderLines" 
+                Description="Sample list for OrderLine items." 
+                CustomSchema="OrderLines\schema.xml">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">Product 1</Field>
+          <Field Name="Price">92.5</Field>
+          <Field Name="Quantity">10</Field>
+          <Field Name="SalesOrder">1</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">2</Field>
+          <Field Name="Title">Product 2</Field>
+          <Field Name="Price">22.5</Field>
+          <Field Name="Quantity">7</Field>
+          <Field Name="SalesOrder">1</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">3</Field>
+          <Field Name="Title">Product 1</Field>
+          <Field Name="Price">28.5</Field>
+          <Field Name="Quantity">3</Field>
+          <Field Name="SalesOrder">2</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">4</Field>
+          <Field Name="Title">Product 1</Field>
+          <Field Name="Price">122.8</Field>
+          <Field Name="Quantity">11</Field>
+          <Field Name="SalesOrder">3</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

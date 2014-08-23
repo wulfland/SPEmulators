@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance 
+    Title="Sales Orders" 
+    OnQuickLaunch="TRUE" 
+    TemplateType="100" 
+    FeatureId="00bfea71-de22-43b2-a848-c05709900100" 
+    Url="Lists/SalesOrders" 
+    Description="Sample list for sales orders." 
+    CustomSchema="SalesOrders\schema.xml">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="ID">1</Field>
+          <Field Name="Title">Customer 1_2012-08-08</Field>
+          <Field Name="OrderDate">8/8/2012</Field>
+          <Field Name="Customer">1</Field>
+          <Field Name="Status">New</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">2</Field>
+          <Field Name="Title">Customer 1_2012-08-09</Field>
+          <Field Name="OrderDate">9/8/2012</Field>
+          <Field Name="Customer">1</Field>
+          <Field Name="Status">New</Field>
+        </Row>
+        <Row>
+          <Field Name="ID">3</Field>
+          <Field Name="Title">Customer 2_2012-08-08</Field>
+          <Field Name="OrderDate">8/8/2012</Field>
+          <Field Name="Customer">2</Field>
+          <Field Name="Status">New</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

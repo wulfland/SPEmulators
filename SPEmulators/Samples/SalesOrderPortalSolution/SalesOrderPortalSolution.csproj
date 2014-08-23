@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53973488-9A31-44C5-9BC3-651DB117F022}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesOrderPortalSolution</RootNamespace>
+    <AssemblyName>SalesOrderPortalSolution</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Customer.cs" />
+    <Compile Include="Core\CustomerListRepository.cs" />
+    <Compile Include="Core\ICustomerRepository.cs" />
+    <Compile Include="Core\ISalesOrderRepository.cs" />
+    <Compile Include="Core\ISalesOrderView.cs" />
+    <Compile Include="Core\OrderLine.cs" />
+    <Compile Include="Core\OrderStatus.cs" />
+    <Compile Include="Core\SalesOrder.cs" />
+    <Compile Include="Core\SalesOrderListRepository.cs" />
+    <Compile Include="Core\SalesOrderPresenter.cs" />
+    <Compile Include="Features\SalesOrderPortal\SalesOrderPortal.EventReceiver.cs">
+      <DependentUpon>SalesOrderPortal.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesOrderWebPart\SalesOrderWebPart.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\SalesOrderPortalSite\SalesOrderPortalSite.feature">
+      <FeatureId>{e2b5711b-4d3c-4eb6-a3fe-0dc834bbab9d}</FeatureId>
+    </None>
+    <None Include="Features\SalesOrderPortal\SalesOrderPortal.feature">
+      <FeatureId>{9bd873d8-1401-4e11-a760-fadc3c8c1454}</FeatureId>
+    </None>
+    <None Include="Key.snk" />
+    <None Include="Lists\Customers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3bb5a80f-e484-4a7f-abf2-4379a7355dd0}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\OrderLines\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{eea40a61-51e8-4c28-83da-45b92a5b515f}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\SalesOrders\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9dc2faa9-d97b-49e4-bb8b-c9719fbc231c}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{dcc4192e-dbfa-474a-9b51-d4897144f047}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="SalesOrderWebPart\SalesOrderWebPart.webpart" />
+    <None Include="SalesOrderWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{12f31d87-f900-47db-9d5b-ccd92f598614}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Features\SalesOrderPortalSite\SalesOrderPortalSite.Template.xml">
+      <DependentUpon>SalesOrderPortalSite.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\SalesOrderPortal\SalesOrderPortal.Template.xml">
+      <DependentUpon>SalesOrderPortal.feature</DependentUpon>
+    </Content>
+    <Content Include="Lists\Customers\Elements.xml" />
+    <Content Include="Lists\OrderLines\Elements.xml" />
+    <Content Include="Lists\OrderLines\schema.xml" />
+    <Content Include="Lists\SalesOrders\Elements.xml" />
+    <Content Include="Lists\SalesOrders\schema.xml" />
+    <Content Include="SalesOrderWebPart\Elements.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

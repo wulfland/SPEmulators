@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Basic List" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Basic List" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      <ContentType ID="0x01"
+        Name="$Resources:Item"
+        Group="$Resources:List_Content_Types"
+        Description="$Resources:ItemCTDesc"
+        Version="0">
+        <FieldRefs>
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE"/>
+          <FieldRef ID="{94C40ECD-FF04-4C25-A2C6-BB98963DA477}" Name="SalesOrder" Required="TRUE"/>
+          <FieldRef ID="{D9087E7D-9B8B-404C-8F0A-5C0FD00E0785}" Name="Price" Required="TRUE"/>
+          <FieldRef ID="{640CB113-3C20-42CB-BF1D-83B7B8E4ACA9}" Name="Quantity" Required="TRUE"/>
+        </FieldRefs>
+        <XmlDocuments>
+          <XmlDocument NamespaceURI="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms">
+            <FormTemplates xmlns="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms">
+              <Display>ListForm</Display>
+              <Edit>ListForm</Edit>
+              <New>ListForm</New>
+            </FormTemplates>
+          </XmlDocument>
+        </XmlDocuments>
+      </ContentType>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
+    <Fields>
+      <Field ID="{94C40ECD-FF04-4C25-A2C6-BB98963DA477}" Name="SalesOrder" DisplayName="Salesorder" Type="Lookup" ShowField="Title" List="Lists/SalesOrders"  />
+      <Field ID="{D9087E7D-9B8B-404C-8F0A-5C0FD00E0785}" Name="Price" DisplayName="Price" Type="Number" />
+      <Field ID="{640CB113-3C20-42CB-BF1D-83B7B8E4ACA9}" Name="Quantity" DisplayName="Quantity" Type="Number" Decimals="0" />
+    </Fields>
+    <Views>
+      <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Position="After" Type="Freeform">
+          <IfHasRights>
+            <RightsChoices>
+              <RightsGroup PermAddListItems="required" />
+            </RightsChoices>
+            <Then>
+              <Switch>
+                <Expr>
+                  <GetVar Name="MasterVersion" />
+                </Expr>
+                <Case Value="4"><HTML><![CDATA[<div class="tb"><img src="/_layouts/images/caladd.gif" alt="" />&#160;<a class="ms-addnew" id="idAddNewItem" href="]]></HTML>
+                  <URL Cmd="New" /><HTML><![CDATA[" onclick="javascript:NewItem(']]></HTML>
+                  <ScriptQuote NotAddingQuote="TRUE">
+                    <URL Cmd="New" />
+                  </ScriptQuote><HTML><![CDATA[', true);javascript:return false;" target="_self">]]></HTML><HTML>$Resources:core,addnewitem;</HTML><HTML><![CDATA[</a></div>]]></HTML>
+                </Case>
+                <Default><HTML><![CDATA[ <table width="100%" cellpadding="0" cellspacing="0" border="0" > <tr> <td colspan="2" class="ms-partline"><img src="/_layouts/images/blank.gif" width='1' height='1' alt="" /></td> </tr> <tr> <td class="ms-addnew" style="padding-bottom: 3px"> <img src="/_layouts/images/rect.gif" alt="" />&#160;<a class="ms-addnew" id="idAddNewItem" href="]]></HTML>
+                  <URL Cmd="New" /><HTML><![CDATA[" onclick="javascript:NewItem(']]></HTML>
+                  <ScriptQuote NotAddingQuote="TRUE">
+                    <URL Cmd="New" />
+                  </ScriptQuote><HTML><![CDATA[', true);javascript:return false;" target="_self">]]></HTML><HTML>$Resources:core,addnewitem;</HTML><HTML><![CDATA[</a> </td> </tr> <tr><td><img src="/_layouts/images/blank.gif" width='1' height='5' alt="" /></td></tr> </table>]]></HTML>
+                </Default>
+              </Switch>
+            </Then>
+          </IfHasRights>
+        </Toolbar>
+        <RowLimit>20</RowLimit>
+        <ViewFields>
+          <FieldRef Name="LinkTitleNoMenu">
+          </FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="Modified" Ascending="FALSE">
+            </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />
+        <ViewFields>
+          <FieldRef Name="Attachments">
+          </FieldRef>
+          <FieldRef Name="LinkTitle">
+          </FieldRef>
+          <FieldRef Name="SalesOrder" />
+          <FieldRef Name="Price" />
+          <FieldRef Name="Quantity" />
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="ID">
+            </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

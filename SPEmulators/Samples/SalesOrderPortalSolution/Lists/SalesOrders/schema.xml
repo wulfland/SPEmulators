@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Basic List" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Basic List" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      <ContentType ID="0x01"
+        Name="$Resources:Item"
+        Group="$Resources:List_Content_Types"
+        Description="$Resources:ItemCTDesc"
+        Version="0">
+        <FieldRefs>
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" Required="TRUE" ShowInNewForm="TRUE" ShowInEditForm="TRUE"/>
+          <FieldRef ID="{E6774726-EA77-4ADA-BFAB-7F2AC0C3782C}" Name="OrderDate" Required="TRUE"/>
+          <FieldRef ID="{976A6519-C3E6-4BF5-B443-140C6A0B8B7C}" Name="Customer" Required="TRUE"/>
+          <FieldRef ID="{93324190-EB84-40F9-9DBF-4CBD45225DA8}" Name="Status" Required="TRUE"/>
+        </FieldRefs>
+        <XmlDocuments>
+          <XmlDocument NamespaceURI="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms">
+            <FormTemplates xmlns="http://schemas.microsoft.com/sharepoint/v3/contenttype/forms">
+              <Display>ListForm</Display>
+              <Edit>ListForm</Edit>
+              <New>ListForm</New>
+            </FormTemplates>
+          </XmlDocument>
+        </XmlDocuments>
+      </ContentType>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
+    <Fields>
+      <Field ID="{E6774726-EA77-4ADA-BFAB-7F2AC0C3782C}" Name="OrderDate" DisplayName="OrderDate" Type="DateTime"  />
+      <Field ID="{93324190-EB84-40F9-9DBF-4CBD45225DA8}" Name="Status" DisplayName="Status" Type="Choice">
+        <CHOICES>
+          <CHOICE>New</CHOICE>
+          <CHOICE>Submitted</CHOICE>
+          <CHOICE>Approved</CHOICE>
+          <CHOICE>Shipped</CHOICE>
+          <CHOICE>Billed</CHOICE>
+        </CHOICES>
+        <Default>New</Default>
+      </Field>
+      <Field ID="{976A6519-C3E6-4BF5-B443-140C6A0B8B7C}" Name="Customer" DisplayName="Customer" Type="Lookup" ShowField="Title" List="Lists/Customers"  />
+    </Fields>
+    <Views>
+      <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Position="After" Type="Freeform">
+          <IfHasRights>
+            <RightsChoices>
+              <RightsGroup PermAddListItems="required" />
+            </RightsChoices>
+            <Then>
+              <Switch>
+                <Expr>
+                  <GetVar Name="MasterVersion" />
+                </Expr>
+                <Case Value="4"><HTML><![CDATA[<div class="tb"><img src="/_layouts/images/caladd.gif" alt="" />&#160;<a class="ms-addnew" id="idAddNewItem" href="]]></HTML>
+                  <URL Cmd="New" /><HTML><![CDATA[" onclick="javascript:NewItem(']]></HTML>
+                  <ScriptQuote NotAddingQuote="TRUE">
+                    <URL Cmd="New" />
+                  </ScriptQuote><HTML><![CDATA[', true);javascript:return false;" target="_self">]]></HTML><HTML>$Resources:core,addnewitem;</HTML><HTML><![CDATA[</a></div>]]></HTML>
+                </Case>
+                <Default><HTML><![CDATA[ <table width="100%" cellpadding="0" cellspacing="0" border="0" > <tr> <td colspan="2" class="ms-partline"><img src="/_layouts/images/blank.gif" width='1' height='1' alt="" /></td> </tr> <tr> <td class="ms-addnew" style="padding-bottom: 3px"> <img src="/_layouts/images/rect.gif" alt="" />&#160;<a class="ms-addnew" id="idAddNewItem" href="]]></HTML>
+                  <URL Cmd="New" /><HTML><![CDATA[" onclick="javascript:NewItem(']]></HTML>
+                  <ScriptQuote NotAddingQuote="TRUE">
+                    <URL Cmd="New" />
+                  </ScriptQuote><HTML><![CDATA[', true);javascript:return false;" target="_self">]]></HTML><HTML>$Resources:core,addnewitem;</HTML><HTML><![CDATA[</a> </td> </tr> <tr><td><img src="/_layouts/images/blank.gif" width='1' height='5' alt="" /></td></tr> </table>]]></HTML>
+                </Default>
+              </Switch>
+            </Then>
+          </IfHasRights>
+        </Toolbar>
+        <RowLimit>20</RowLimit>
+        <ViewFields>
+          <FieldRef Name="LinkTitleNoMenu">
+          </FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="Modified" Ascending="FALSE">
+            </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />
+        <ViewFields>
+          <FieldRef Name="Attachments">
+          </FieldRef>
+          <FieldRef Name="LinkTitle">
+          </FieldRef>
+          <FieldRef Name="OrderDate" />
+          <FieldRef Name="Customer" />
+          <FieldRef Name="Status" />
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="ID">
+            </FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>
