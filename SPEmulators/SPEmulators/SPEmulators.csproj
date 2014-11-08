@@ -104,6 +104,7 @@
     <Compile Include="EmulatedTypes\SimSPUserCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPView.cs" />
     <Compile Include="EmulatedTypes\SimSPViewContext.cs" />
+    <Compile Include="EmulatedTypes\SimSPViewFieldCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPWeb.cs" />
     <Compile Include="EmulatedTypes\SimSPViewCollection.cs" />
     <Compile Include="EmulatedTypes\SimSPWebApplication.cs" />

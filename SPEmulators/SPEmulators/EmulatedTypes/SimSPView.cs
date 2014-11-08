@@ -11,6 +11,8 @@
         private string serverRelativeUrl;
         private string title;
         private string url;
+        private readonly SimSPViewFieldCollection viewFields = 
+            new SimSPViewFieldCollection();
 
         public Guid ID
         {
@@ -68,11 +70,13 @@
         public SimSPView(SPView instance)
             : base(instance)
         {
+            viewFields.View = this.Instance;
             base.Fake.IDGet = (() => this.ID);
             base.Fake.UrlGet = (() => this.Url);
             base.Fake.ServerRelativeUrlGet = (() => this.ServerRelativeUrl);
             base.Fake.TitleGet = (() => this.Title);
             base.Fake.ParentListGet = (() => this.ParentList);
+            base.Fake.ViewFieldsGet = () => this.viewFields.Instance;
         }
 
         public static SimSPView FromInstance(SPView instance)

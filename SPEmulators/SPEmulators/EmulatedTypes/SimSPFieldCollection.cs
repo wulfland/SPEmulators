@@ -55,6 +55,7 @@
         {
             base.Fake.Bind(this);
             base.Fake.ContainsGuid = (Guid id) => this.Any((SPField field) => field.Id == id);
+            base.Fake.ContainsFieldString = name => this.Any(field => field.Title == name || field.InternalName == name);
             base.Fake.ItemGetInt32 = (int index) => base[index];
             base.Fake.ItemAtIndexInt32 = (int index) => base[index];
             base.Fake.ItemGetString = (string title) =>
