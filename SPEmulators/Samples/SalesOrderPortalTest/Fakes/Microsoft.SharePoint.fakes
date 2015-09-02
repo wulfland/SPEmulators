@@ -44,6 +44,7 @@
     <Add FullName="Microsoft.SharePoint.SPUserCollection!"/>
     <Add FullName="Microsoft.SharePoint.SPView!"/>
     <Add FullName="Microsoft.SharePoint.SPViewCollection!"/>
+    <Add FullName="Microsoft.SharePoint.SPViewFieldCollection!"/>
     <Add FullName="Microsoft.SharePoint.SPViewContext!"/>
     <Add FullName="Microsoft.SharePoint.SPWeb!"/>
     <Add FullName="Microsoft.SharePoint.SPWebCollection!"/>

@@ -33,6 +33,7 @@ namespace SPEmulators.EmulatedTypes
             var result = new StringCollection();
             foreach (var field in this)
                 result.Add(field.InternalName);
+
             return result;
         }
     }

@@ -41,10 +41,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Microsoft.SharePoint.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SharePoint.15.0.0.0.Fakes, Version=15.0.0.0, Culture=neutral, PublicKeyToken=0ae41878053f6703, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>FakesAssemblies\Microsoft.SharePoint.15.0.0.0.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="SPEmulators">
+      <HintPath>..\..\packages\SPEmulators.2.0.0\lib\net40\SPEmulators.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.4.0.0.0.Fakes">
@@ -94,10 +100,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SPEmulators\SPEmulators.csproj">
-      <Project>{d0a95188-229a-4532-b71d-9b48db8cf0fd}</Project>
-      <Name>SPEmulators</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SalesOrderPortalSolution\SalesOrderPortalSolution.csproj">
       <Project>{53973488-9a31-44c5-9bc3-651db117f022}</Project>
       <Name>SalesOrderPortalSolution</Name>

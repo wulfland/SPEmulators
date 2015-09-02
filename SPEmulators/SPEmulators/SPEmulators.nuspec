@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>SPEmulators</id>
-    <version>1.1.0.1-pre</version>
+    <version>2.0.0</version>
     <title>SPEmulators</title>
     <authors>Michael Kaufmann</authors>
     <owners>Michael Kaufmann</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/wulfland/SPEmulators/master/SPEmulators/SPEmulators/spemulators.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package allows simluation / emulation of SharePoint 2013 farm solutions. The test project must be dotnet 4.5 or above and have support for microsoft fakes.</description>
-    <tags>SharePoint Fake</tags>
+    <tags>SharePoint Fake Mock Emulators</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="Microsoft.QualityTools.Testing.Fakes" targetFramework="" />
       <frameworkAssembly assemblyName="Microsoft.SharePoint" targetFramework="" />
