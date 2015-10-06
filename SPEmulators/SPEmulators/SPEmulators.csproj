@@ -142,11 +142,14 @@
   <ItemGroup>
     <Content Include="spemulators.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "$(TargetDir)packages\tools"
-copy /Y "$(ProjectDir)tools\*" "$(TargetDir)packages\tools"
+copy /Y "$(ProjectDir)tools\init.ps1" "$(TargetDir)packages\tools\init.ps1"
+copy /Y "$(ProjectDir)tools\install.ps1" "$(TargetDir)packages\tools\init.ps1"
 mkdir "$(TargetDir)packages\lib\net40"
 copy /Y "$(TargetPath)" "$(TargetDir)packages\lib\net40\"
 mkdir "$(TargetDir)packages\content\Fakes"

@@ -57,5 +57,7 @@
     <Add FullName="Microsoft.SharePoint.Administration.SPWebConfigModification!"/>
     <Add FullName="Microsoft.SharePoint.Utilities.SPPropertyBag!"/>
     <Add FullName="Microsoft.SharePoint.WebControls.SPControl!"/>
+    <Add FullName="Microsoft.SharePoint.WebPartPages.SPLimitedWebPartManager!"/>
+    <Add FullName="Microsoft.SharePoint.WebPartPages.SPLimitedWebPartCollection!"/>
   </ShimGeneration>
 </Fakes>
